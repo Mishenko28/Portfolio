@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import animateName from "./hooks/useAnimateName"
+import { CodeBlock, vs2015 } from 'react-code-blocks'
 
 const App = () => {
     const [currentPage, setCurrentPage] = useState(0)
@@ -71,16 +72,37 @@ const App = () => {
                 </div>
             </div>
             <div className="cont-2" ref={e => pages.current[1] = e}>
-                <h1>tae1</h1>
+                <CodeBlock
+                    text={`
+                        {
+                                fullName: "John Thomas Tolentino Alog",
+                                age: ${Math.floor((new Date() - new Date("2000-12-28")) / (1000 * 60 * 60 * 24 * 365.25))},
+                                gender: "Male"
+                                nationality: "Filipino",
+                                location: "Olongapo City, Philippines",
+                                profession: "Junior Full Stack Web Developer",
+                                hobbies: ["Coding", "Gaming", "Music"],
+                                education: {
+                                        degree: "Bachelor of Science in Computer Science",
+                                        institution: "Kolehiyo ng Subic",
+                                        graduationYear: 2025
+                                }
+                        }
+                    `}
+                    language="javascript"
+                    showLineNumbers
+                    theme={vs2015}
+                    customStyle={{ fontSize: "clamp(0.4rem, 1.5vw, 1.2rem)" }}
+                />
             </div>
             <div className="cont-3" ref={e => pages.current[2] = e}>
-                <h1>tae2</h1>
+                <h1>Tech Stacks</h1>
             </div>
             <div className="cont-4" ref={e => pages.current[3] = e}>
-                <h1>tae3</h1>
+                <h1>Projects</h1>
             </div>
             <div className="cont-5" ref={e => pages.current[4] = e}>
-                <h1>tae4</h1>
+                <h1>Contacts</h1>
             </div>
         </div>
     )
