@@ -42,6 +42,7 @@
         position: fixed;
         right: 20px;
         height: 100svh;
+        z-index: 1;
 
         .icons {
             border: 3px solid var(--primary-1);
@@ -119,6 +120,13 @@
     .cont-2 {
         height: 100svh;
         padding: max(25px, 3vw);
+
+        span:has(code) {
+
+            code {
+                translate: -50px;
+            }
+        }
     }
 
     .cont-3 {

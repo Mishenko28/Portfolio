@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import animateName from "./hooks/useAnimateName"
-import { CodeBlock, vs2015 } from 'react-code-blocks'
+import { CodeBlock, sunburst } from 'react-code-blocks'
 
 const App = () => {
     const [currentPage, setCurrentPage] = useState(0)
@@ -90,9 +90,9 @@ const App = () => {
                         }
                     `}
                     language="javascript"
-                    showLineNumbers
-                    theme={vs2015}
-                    customStyle={{ fontSize: "clamp(0.4rem, 1.5vw, 1.2rem)" }}
+                    theme={sunburst}
+                    showLineNumbers={false}
+                    customStyle={{ fontSize: "clamp(0.6rem, 1.5vw, 1.2rem)" }}
                 />
             </div>
             <div className="cont-3" ref={e => pages.current[2] = e}>
