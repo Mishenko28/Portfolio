@@ -8,10 +8,12 @@
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "echo jtmishenko.me > dist/CNAME",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "motion": "^12.18.1",
     "react": "^19.1.0",
     "react-code-blocks": "^0.1.6",
     "react-dom": "^19.1.0"
