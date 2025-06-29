@@ -46,7 +46,6 @@ const App = () => {
     const [currentPage, setCurrentPage] = useState(0)
     const pages = useRef([])
     const { name, isAnimating, erase, write } = animateName({ text: "JOHN THOMAS ALOG", speedMili: 40 })
-    const [isDraggedNavs, setIsDraggedNavs] = useState(false)
     const [isPointed, setIsPointed] = useState(false)
 
     useEffect(() => {
@@ -69,7 +68,60 @@ const App = () => {
 
     useEffect(() => {
         write()
+        changeColorTheme()
     }, [])
+
+    const changeColorTheme = () => {
+        const randomColors = [
+            {
+                primaryDark: "#0061ff",
+                primaryLight: "#60efff"
+            },
+            {
+                primaryDark: "#00ff87",
+                primaryLight: "#60efff"
+            },
+            {
+                primaryDark: "#40c9ff",
+                primaryLight: "#e81cff"
+            },
+            {
+                primaryDark: "#ff930f",
+                primaryLight: "#fff95b"
+            },
+            {
+                primaryDark: "#696eff",
+                primaryLight: "#f8acff"
+            },
+            {
+                primaryDark: "#103783",
+                primaryLight: "#9bafd9"
+            },
+            {
+                primaryDark: "#42047e",
+                primaryLight: "#07f49e"
+            },
+            {
+                primaryDark: "#d3321d",
+                primaryLight: "#ffcf67"
+            },
+            {
+                primaryDark: "#34073d",
+                primaryLight: "#ef745c"
+            }
+        ]
+        const currentPrimaryDark = getComputedStyle(document.documentElement).getPropertyValue('--primary-dark').trim()
+
+        const randomIndex = Math.floor(Math.random() * randomColors.length)
+        const { primaryDark, primaryLight } = randomColors[randomIndex]
+
+        if (primaryDark === currentPrimaryDark) {
+            return changeColorTheme()
+        }
+
+        document.documentElement.style.setProperty('--primary-dark', primaryDark)
+        document.documentElement.style.setProperty('--primary-light', primaryLight)
+    }
 
     const scrollTo = (i) => {
         pages.current[i].scrollIntoView({
@@ -78,7 +130,7 @@ const App = () => {
     }
 
     const applyStyle = (i) => {
-        return currentPage === i ? { color: "#fff" } : null
+        return currentPage === i ? { color: "var(--text)" } : null
     }
 
     const handleAnimateClick = async () => {
@@ -111,40 +163,50 @@ const App = () => {
         }, 800)
     }
 
+    // TOGGLE DARK AND LIGHT MODE
+    const toggleDarkMode = (isLight) => {
+        if (isLight) {
+            document.documentElement.setAttribute('data-theme', 'light')
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark')
+        }
+    }
+
     return (
         <div className='app'>
-            <div className="slider">
-                <motion.div
-                    whileDrag={{ cursor: "grabbing", scale: 1.1 }}
-                    onDragEnd={() => setIsDraggedNavs(true)}
-                    drag
-                    dragMomentum={false}
-                    dragConstraints={{ left: -window.innerWidth + 130, right: 0, top: -window.innerHeight / 2 + 120, bottom: window.innerHeight / 2 - 120 }}
-                    className="icons"
-                >
-                    <h6 style={isDraggedNavs ? { color: "transparent", backgroundColor: "#002aff3b", marginLeft: 0 } : null}>drag me</h6>
-                    <div className="bttns">
-                        <i style={applyStyle(0)} onClick={() => scrollTo(0)} className="fa-solid fa-house" />
-                        <i style={applyStyle(1)} onClick={() => scrollTo(1)} className="fa-solid fa-address-card" />
-                        <i style={applyStyle(2)} onClick={() => scrollTo(2)} className="fa-solid fa-code" />
-                        <i style={applyStyle(3)} onClick={() => scrollTo(3)} className="fa-solid fa-layer-group" />
-                        <i style={applyStyle(4)} onClick={() => scrollTo(4)} className="fa-solid fa-phone" />
-                    </div>
-                </motion.div>
+            <motion.div
+                whileDrag={{ cursor: "grabbing", scale: 1.1 }}
+                drag
+                dragMomentum={false}
+                dragConstraints={{ left: -window.innerWidth + 130, right: 0, top: -window.innerHeight / 2 + 120, bottom: window.innerHeight / 2 - 120 }}
+                className="slider"
+            >
+                <i style={applyStyle(0)} onClick={() => scrollTo(0)} className="fa-solid fa-house" />
+                <i style={applyStyle(1)} onClick={() => scrollTo(1)} className="fa-solid fa-address-card" />
+                <i style={applyStyle(2)} onClick={() => scrollTo(2)} className="fa-solid fa-code" />
+                <i style={applyStyle(3)} onClick={() => scrollTo(3)} className="fa-solid fa-layer-group" />
+                <i style={applyStyle(4)} onClick={() => scrollTo(4)} className="fa-solid fa-phone" />
+            </motion.div>
+            <div className="top-bttns">
+                <i class="fa-solid fa-paint-roller" onClick={changeColorTheme} />
+                <div class="toggle">
+                    <input id="toggle-switch" type="checkbox" onChange={e => toggleDarkMode(e.target.checked)} />
+                    <label for="toggle-switch"></label>
+                </div>
             </div>
             <div className="cont-1" ref={e => pages.current[0] = e}>
-                <h1>Hi, I am <b onClick={handleAnimateClick}>{name}<span style={!isAnimating ? { animation: "blink 1.2s ease-in-out infinite" } : null}>|</span>{!isPointed && <i className="fa-regular fa-hand-pointer" />}</b></h1>
+                <h1>Hello, I'm <b onClick={handleAnimateClick}>{name}<span style={!isAnimating ? { animation: "blink 1.2s ease-in-out infinite" } : null}>|</span>{!isPointed && <i className="fa-regular fa-hand-pointer" />}</b></h1>
                 <div>
-                    <h2>Welcome to my portfolio</h2>
-                    <p>
-                        I am a Full  Stack Developer with a passion for creating innovative solutions.
-                    </p>
+                    <h2>And i'm a Full Stack Developer</h2>
                     <p>
                         I specialize in building responsive and user-friendly web applications using modern technologies.
                     </p>
                     <p>
                         Feel free to reach out if you would like to collaborate!
                     </p>
+                    <div className="socials">
+
+                    </div>
                 </div>
             </div>
             <div className="cont-2" ref={e => pages.current[1] = e}>
@@ -157,18 +219,18 @@ const App = () => {
                 >
                     <CodeBlock
                         text={`
-                        {
-                                fullName: "John Thomas Tolentino Alog",
-                                age: ${Math.floor((new Date() - new Date("2000-12-28")) / (1000 * 60 * 60 * 24 * 365.25))},
-                                gender: "Male"
-                                nationality: "Filipino",
-                                location: "Olongapo City, Philippines",
-                                profession: "Junior Full Stack Web Developer",
-                                hobbies: ["Coding", "Gaming", "Music"],
-                                education: {
-                                        degree: "Bachelor of Science in Computer Science",
-                                        institution: "Kolehiyo ng Subic",
-                                        graduationYear: 2025
+                        personalInfo:   {
+                                    fullName: "John Thomas Tolentino Alog",
+                                    age: ${Math.floor((new Date() - new Date("2000-12-28")) / (1000 * 60 * 60 * 24 * 365.25))},
+                                    gender: "Male"
+                                    nationality: "Filipino",
+                                    location: "Olongapo City, Philippines",
+                                    profession: "Junior Full Stack Web Developer",
+                                    hobbies: ["Coding", "Gaming", "Music"],
+                                    education: {
+                                            degree: "Bachelor of Science in Computer Science",
+                                            institution: "Kolehiyo ng Subic",
+                                            graduationYear: 2025
                                 }
                         }
                     `}
@@ -226,8 +288,8 @@ const App = () => {
                             transition={{ duration: 1, type: "spring", bounce: 0.4 }}
                             viewport={{ once: true, amount: 0.5 }}
                         ></motion.iframe>
-                        <h2>THESIS</h2>
-                        <h3>"The Lagoon Resort Finland Inc. Website with online Booking System"</h3>
+                        <h2>WEBSITE</h2>
+                        <h3>"The Lagoon Resort Finland Inc. Website with online Booking System" (Thesis Subject)</h3>
                         <a target="_blank" href="https://the-lagoon-resort-finland-inc.onrender.com">https://the-lagoon-resort-finland-inc.onrender.com</a>
                     </div>
                     <div className="work">
@@ -239,16 +301,63 @@ const App = () => {
                             transition={{ duration: 1, type: "spring", bounce: 0.4 }}
                             viewport={{ once: true, amount: 0.5 }}
                         ></motion.iframe>
-                        <h2>SOFTWARE ENGINEERING</h2>
-                        <h3>"Website for Cyfres Beach Resort"</h3>
+                        <h2>WEBSITE</h2>
+                        <h3>"Website for Cyfres Beach Resort" (Software Engineering Subject)</h3>
                         <a target="_blank" href="https://cyfres-beach-resort.onrender.com">https://cyfres-beach-resort.onrender.com</a>
                     </div>
                 </div>
             </div>
             <div className="cont-5" ref={e => pages.current[4] = e}>
-                <h1>Contacts</h1>
-                <p>in developing...</p>
+                <div className="contacts">
+                    <h1>My Social Accounts</h1>
+                    <div className="contact">
+                        <i className="fa-brands fa-square-facebook icon" />
+                        <div className="contact-text">
+                            <h2>Facebook</h2>
+                            <div className="link">
+                                <p>https://facebook.com/johnthomas.alog</p>
+                                <a href="https://facebook.com/johnthomas.alog" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="contact">
+                        <i className="fa-brands fa-square-instagram icon" />
+                        <div className="contact-text">
+                            <h2>Instagram</h2>
+                            <div className="link">
+                                <p>https://www.instagram.com/jtmishenko</p>
+                                <a href="https://www.instagram.com/jtmishenko" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="contact">
+                        <i className="fa-solid fa-square-envelope icon" />
+                        <div className="contact-text">
+                            <h2>Email</h2>
+                            <div className="link">
+                                <p>johnthomasalog@gmail.com</p>
+                                <a href="mailto:johnthomasalog@gmail.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="contact">
+                        <i className="fa-brands fa-square-github icon" />
+                        <div className="contact-text">
+                            <h2>Github</h2>
+                            <div className="link">
+                                <p>https://github.com/Mishenko28</p>
+                                <a href="https://github.com/Mishenko28" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <footer>
+                <div className="footer-text">
+                    <p>© {new Date().getFullYear()} John Thomas Alog. All rights reserved.</p>
+                    <p>Made using React.js</p>
+                </div>
+            </footer>
         </div >
     )
 }
