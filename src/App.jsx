@@ -205,7 +205,14 @@ const App = () => {
                         Feel free to reach out if you would like to collaborate!
                     </p>
                     <div className="socials">
-
+                        <a href="https://facebook.com/johnthomas.alog" target="_blank"><i className="fa-brands fa-square-facebook icon" /></a>
+                        <a href="https://www.instagram.com/jtmishenko" target="_blank"><i className="fa-brands fa-square-instagram icon" /></a>
+                        <a href="mailto:johnthomasalog@gmail.com" target="_blank"><i className="fa-solid fa-square-envelope icon" /></a>
+                        <a href="https://github.com/Mishenko28" target="_blank"><i className="fa-brands fa-square-github icon" /></a>
+                        <a href="RESUME2025.pdf" download="john_thomas_alog_CV.pdf" className="cv">
+                            Download CV
+                            <i className="fa-solid fa-download" />
+                        </a>
                     </div>
                 </div>
             </div>

@@ -75,6 +75,10 @@
             color: var(--text);
             font-size: calc(var(--dark-light-btn-size) / 2);
             cursor: pointer;
+
+            &:active {
+                animation: click 0.3s ease-in-out;
+            }
         }
     }
 
@@ -135,7 +139,7 @@
             b {
                 border-left: 20px solid var(--primary-dark);
                 border-bottom: 2px solid var(--primary-dark);
-                font-size: clamp(3rem, 12vw, 8rem);
+                font-size: clamp(4rem, 15vw, 8rem);
                 font-weight: 900;
                 font-weight: 900;
                 width: min-content;
@@ -170,6 +174,45 @@
             color: var(--text-muted);
             line-height: 1.8;
             margin-right: 60px;
+        }
+
+        .socials {
+            display: flex;
+            gap: max(5px, 0.7vw);
+
+            .icon {
+                font-size: clamp(2rem, 5vw, 2.5rem);
+                background: linear-gradient(0deg, var(--primary-dark) 80%, var(--primary-light));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                cursor: pointer;
+
+                &:hover {
+                    scale: 1.1;
+                    transition: all 0.3s;
+                }
+            }
+
+            .cv {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding-inline: 10px;
+                font-size: clamp(0.8rem, 3vw, 1rem);
+                color: var(--text);
+                background: var(--gradient);
+                box-shadow: var(--shadow);
+                border: none;
+                border-radius: 20px;
+                cursor: pointer;
+                text-decoration: none;
+
+                &:hover {
+                    scale: 1.05;
+                    background: var(--bg-light);
+                    transition: all 0.3s;
+                }
+            }
         }
     }
 
