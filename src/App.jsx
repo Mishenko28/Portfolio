@@ -284,7 +284,7 @@ const App = () => {
                 </motion.div>
             </div>
             <div className="cont-4" ref={e => pages.current[3] = e}>
-                <h1>My Work</h1>
+                <h1>Recent Projects</h1>
                 <div className="works-cont">
                     <div className="work">
                         <motion.iframe
