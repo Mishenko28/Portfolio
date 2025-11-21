@@ -44,19 +44,6 @@
     --shadow: 0 2px 2px hsla(0, 0%, 0%, 0.07), 0 4px 4px hsla(0, 0%, 0%, 0.15);
 }
 
-#particles-js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100svw;
-    height: 100svh;
-    background-image: url('');
-    background-size: cover;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    z-index: 1;
-}
-
 .app {
     display: flex;
     background-color: var(--bg-dark);
@@ -172,8 +159,9 @@
         p {
             font-size: clamp(1rem, 3vw, 1.2rem);
             color: var(--text-muted);
-            line-height: 1.8;
+            line-height: 1.5;
             margin-right: 60px;
+            font-weight: 300;
         }
 
         .socials {
@@ -266,7 +254,7 @@
                 align-items: center;
 
                 img {
-                    width: clamp(90px, 20vw, 240px);
+                    width: clamp(90px, 15vw, 240px);
                     aspect-ratio: 1/1;
                     object-fit: scale-down;
                     background: #ffffff;

@@ -28,7 +28,7 @@ const useAnimateName = ({ text, speedMili }) => {
     const erase = async () => {
         if (isAnimating) return false
         setIsAnimating(true)
-        for (const letter of name) {
+        for (const _ of name) {
             await new Promise(resolve => {
                 setTimeout(() => {
                     setName(prev => prev.slice(0, -1))

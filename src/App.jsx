@@ -10,6 +10,8 @@ import ReactJS from "./assets/logos/reactJs.png"
 import NodeJS from "./assets/logos/nodeJs.png"
 import ExpressJS from "./assets/logos/express-js.png"
 import MongoDB from "./assets/logos/mongoDB.png"
+import NextJS from "./assets/logos/nextjs.svg"
+import Ts from "./assets/logos/Typescript.png"
 
 const imageNames = [
     {
@@ -23,6 +25,10 @@ const imageNames = [
     {
         name: "JavaScript",
         path: Js
+    },
+    {
+        name: "TypeScript",
+        path: Ts
     },
     {
         name: "React.js",
@@ -39,7 +45,11 @@ const imageNames = [
     {
         name: "MongoDB",
         path: MongoDB
-    }
+    },
+    {
+        name: "Next.js",
+        path: NextJS
+    },
 ]
 
 const App = () => {
@@ -188,10 +198,10 @@ const App = () => {
                 <i style={applyStyle(4)} onClick={() => scrollTo(4)} className="fa-solid fa-phone" />
             </motion.div>
             <div className="top-bttns">
-                <i class="fa-solid fa-paint-roller" onClick={changeColorTheme} />
-                <div class="toggle">
+                <i className="fa-solid fa-paint-roller" onClick={changeColorTheme} />
+                <div className="toggle">
                     <input id="toggle-switch" type="checkbox" onChange={e => toggleDarkMode(e.target.checked)} />
-                    <label for="toggle-switch"></label>
+                    <label htmlFor="toggle-switch"></label>
                 </div>
             </div>
             <div className="cont-1" ref={e => pages.current[0] = e}>
@@ -323,7 +333,7 @@ const App = () => {
                             <h2>Facebook</h2>
                             <div className="link">
                                 <p>https://facebook.com/johnthomas.alog</p>
-                                <a href="https://facebook.com/johnthomas.alog" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" /></a>
+                                <a href="https://facebook.com/johnthomas.alog" target="_blank"><i className="fa-solid fa-arrow-up-right-from-square" /></a>
                             </div>
                         </div>
                     </div>
@@ -333,7 +343,7 @@ const App = () => {
                             <h2>Instagram</h2>
                             <div className="link">
                                 <p>https://www.instagram.com/jtmishenko</p>
-                                <a href="https://www.instagram.com/jtmishenko" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" /></a>
+                                <a href="https://www.instagram.com/jtmishenko" target="_blank"><i className="fa-solid fa-arrow-up-right-from-square" /></a>
                             </div>
                         </div>
                     </div>
@@ -343,7 +353,7 @@ const App = () => {
                             <h2>Email</h2>
                             <div className="link">
                                 <p>johnthomasalog@gmail.com</p>
-                                <a href="mailto:johnthomasalog@gmail.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" /></a>
+                                <a href="mailto:johnthomasalog@gmail.com" target="_blank"><i className="fa-solid fa-arrow-up-right-from-square" /></a>
                             </div>
                         </div>
                     </div>
@@ -353,7 +363,7 @@ const App = () => {
                             <h2>Github</h2>
                             <div className="link">
                                 <p>https://github.com/Mishenko28</p>
-                                <a href="https://github.com/Mishenko28" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" /></a>
+                                <a href="https://github.com/Mishenko28" target="_blank"><i className="fa-solid fa-arrow-up-right-from-square" /></a>
                             </div>
                         </div>
                     </div>
