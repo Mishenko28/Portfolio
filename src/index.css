@@ -300,7 +300,6 @@
                     aspect-ratio: 16/9;
                     background-color: #ffffff;
                     border: none;
-                    pointer-events: none;
                 }
 
                 h2 {

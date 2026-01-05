@@ -264,9 +264,9 @@ const App = () => {
                     <motion.span
                         initial={{ width: 0 }}
                         whileInView={{ width: "max-content" }}
-                        transition={{ duration: 2, type: "spring", bounce: 0.4 }}
-                        viewport={{ once: false, amount: 1 }}
-                    >CodingSkills</motion.span>
+                        transition={{ duration: 1, type: "spring" }}
+                        viewport={{ once: true, amount: 1 }}
+                    >Coding Skills</motion.span>
                     <b>/<i className="fa-solid fa-angle-right" /></b>
                 </h1>
                 <motion.div viewport={{ amount: 1 }} onViewportEnter={addSkillImage} className="skills">
@@ -305,8 +305,8 @@ const App = () => {
                             transition={{ duration: 1, type: "spring", bounce: 0.4 }}
                             viewport={{ once: true, amount: 0.5 }}
                         ></motion.iframe>
-                        <h2>WEBSITE</h2>
-                        <h3>"The Lagoon Resort Finland Inc. Website with online Booking System" (Thesis Subject)</h3>
+                        <h2>The Lagoon Resort Finland Inc.</h2>
+                        <h3>Website with online Booking System (Thesis Subject)</h3>
                         <a target="_blank" href="https://the-lagoon-resort-finland-inc.onrender.com">https://the-lagoon-resort-finland-inc.onrender.com</a>
                     </div>
                     <div className="work">
@@ -318,9 +318,22 @@ const App = () => {
                             transition={{ duration: 1, type: "spring", bounce: 0.4 }}
                             viewport={{ once: true, amount: 0.5 }}
                         ></motion.iframe>
-                        <h2>WEBSITE</h2>
-                        <h3>"Website for Cyfres Beach Resort" (Software Engineering Subject)</h3>
+                        <h2>Website for Cyfres Beach Resort</h2>
+                        <h3>Website with online Booking System (Software Engineering Subject)</h3>
                         <a target="_blank" href="https://cyfres-beach-resort.onrender.com">https://cyfres-beach-resort.onrender.com</a>
+                    </div>
+                    <div className="work">
+                        <motion.iframe
+                            src="https://news-io-tan.vercel.app"
+                            title="Live Project Preview"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1, type: "spring", bounce: 0.4 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                        ></motion.iframe>
+                        <h2>news.io</h2>
+                        <h3>News web application made in NEXT.JS</h3>
+                        <a target="_blank" href="https://news-io-tan.vercel.app">https://news-io-tan.vercel.app</a>
                     </div>
                 </div>
             </div>
